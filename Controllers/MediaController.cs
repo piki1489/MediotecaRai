@@ -53,5 +53,12 @@ namespace MediotecaRai.Controllers
             }
             return View(item);
         }
+
+        [Authorize(Roles = "Admin")]
+        public IActionResult SoloAdmin()
+        {
+            return Content("Eres administrador");
+        }
+
     }
 }
