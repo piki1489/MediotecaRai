@@ -1,6 +1,7 @@
 ﻿using MediotecaRai.Data;
+using MediotecaRai.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace MediotecaRai.Controllers
@@ -18,7 +19,7 @@ namespace MediotecaRai.Controllers
 
             if (!string.IsNullOrWhiteSpace(tipo))
             {
-                query = query.Where(m => m.Tipo == tipo); 
+                query = query.Where(m => m.Tipo == tipo);
             }
             if (!string.IsNullOrWhiteSpace(titulo))
             {
@@ -26,6 +27,21 @@ namespace MediotecaRai.Controllers
             }
             var resultados = query.ToList();
             return View(resultados);
+        }
+
+        [Authorize]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [Authorize]
+        [HttpPost]
+        public IActionResult Create(MediaItem mediaItem)
+        {
+            _context.MediaItems.Add(mediaItem);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+
         }
     }
 }

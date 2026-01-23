@@ -1,5 +1,6 @@
 ﻿@using MediotecaRai.Models
 
+
 @model List<MediaItem>
 
 <h1>Bienvenido a la Medioteca Rai</h1>
@@ -25,16 +26,30 @@
     </div>
 </form>
 <ul>
-@if (Model != null && Model.Any())
-{
-    @foreach (var i in Model)
+    @if (Model != null && Model.Any())
     {
-        <li>@i.Titulo</li>
+        @foreach (var i in Model)
+        {
+            <li>@i.Titulo</li>
+        }
     }
-}
-else
-{
-    <li>No hay resultados</li>
-}
+    else
+    {
+        <li>No hay resultados</li>
+
+        @if (User.Identity.IsAuthenticated)
+        {
+            <li>
+                <a href="/Media/Create">Añadir nueva obra</a>
+            </li>
+        }
+        else
+        {
+            <li>
+                <a href="/Identity/Account/Login">Regístrate para añadir una nueva obra</a>
+            </li>
+        }
+    }
 </ul>
+
 
