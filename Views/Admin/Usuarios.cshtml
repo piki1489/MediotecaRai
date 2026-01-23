@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@model List<IdentityUser>
+
+    <h1>Administrar usuarios</h1>
+
+    <div>
+    @foreach (var i in Model)
+    {
+        <p>@i.Email</p>
+
+        @if (i.LockoutEnd != null && i.LockoutEnd > DateTimeOffset.Now)
+        {
+            <a href="/Admin/Desbloquear?id=@i.Id">Desbloquear</a>
+        }
+        else
+        {
+            <a href="/Admin/Bloquear?id=@i.Id">Bloquear</a>
+        }
+
+        <hr />
+    }
+
+  
+    </div>
