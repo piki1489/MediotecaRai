@@ -30,7 +30,11 @@
     {
         @foreach (var i in Model)
         {
-            <li>@i.Titulo</li>
+            <div>
+            <li><a href="/Media/Detalles/@i.Id"> @i.Titulo</a></li>
+            <li><strong>Tipo: </strong> <@i.Tipo></li>
+            <li><strong>Autor: </strong> <@i.Autor></li>
+            </div>
         }
     }
     else

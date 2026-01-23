@@ -43,5 +43,15 @@ namespace MediotecaRai.Controllers
             return RedirectToAction("Index");
 
         }
+
+        public IActionResult Detalles(int id)
+        {
+            var item = _context.MediaItems.FirstOrDefault(m => m.Id == id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return View(item);
+        }
     }
 }
