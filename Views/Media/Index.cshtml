@@ -14,9 +14,7 @@
             <option value="Libro">Libro</option>
             <option value="Musica">Música</option>
             <option value="Pelicula">Película</option>
-            <option value="Disco/Vinilo">Disco/Vinilo</option>
             <option value="Comic">Cómic</option>
-            <option value="CD">CD</option>
         </select>
     </div>
 
@@ -36,11 +34,11 @@
         <a class="boton btnDesbloquear" href="/Media/Create">Añadir nueva obra</a>
     </div>
 }
-else
+@* else
 {   <div class="campo-filtro acciones-filtro">
         <a class="boton btnDesbloquear" href="/Identity/Account/Login">Regístrate para añadir una nueva obra</a>
     </div>
-}
+} *@
 <ul class="lista-obras">
     @if (Model != null && Model.Any())
     {
@@ -87,10 +85,10 @@ else
             {
                 <a class="boton boton-primario" href="/Media/Create">Añadir nueva obra</a>
             }
-            @* else
+            else
             {
                 <a class="boton boton-primario" href="/Identity/Account/Login">Regístrate para añadir una nueva obra</a>
-            } *@
+            }
         </li>
     }
 </ul>

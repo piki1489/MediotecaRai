@@ -14,9 +14,7 @@
         <option value="Libro">Libro</option>
         <option value="Musica">Música</option>
         <option value="Pelicula">Película</option>
-        <option value="Disco/Vinilo">Disco/Vinilo</option>
         <option value="Comic">Cómic</option>
-        <option value="CD">CD</option>
     </select>
     
     <label>Título</label>
@@ -29,7 +27,13 @@
     <input type="text" name="descripcion"> 
     
     <label>Año</label>
-    <input name="anio">
+    <select name="anio">
+        <option value="">Seleccione un año</option>
+        @for (int year = DateTime.Now.Year; year >= 1800; year--)
+        {
+            <option value="@year">@year</option>
+        }
+    </select>
     
     <input type="submit" name="enviar" value="Enviar" class="boton-primario" />
 </form>
