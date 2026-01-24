@@ -59,6 +59,19 @@ namespace MediotecaRai.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
+        {
+            var item = _context.MediaItems.FirstOrDefault(m => m.Id == id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            _context.MediaItems.Remove(item);
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
 
     }
 }

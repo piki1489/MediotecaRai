@@ -1,4 +1,5 @@
 ﻿@using MediotecaRai.Models
+@using Microsoft.AspNetCore.Identity
 
 
 @model List<MediaItem>
@@ -30,11 +31,21 @@
     {
         @foreach (var i in Model)
         {
-            <div>
-            <li><a href="/Media/Detalles/@i.Id"> @i.Titulo</a></li>
-            <li><strong>Tipo: </strong> <@i.Tipo></li>
-            <li><strong>Autor: </strong> <@i.Autor></li>
-            </div>
+            <li>
+                <div>
+                    <a href="/Media/Detalles/@i.Id">@i.Titulo</a><br />
+                    <strong>Tipo:</strong> @i.Tipo<br />
+                    <strong>Autor:</strong> @i.Autor<br />
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <form action="/Media/Delete" method="post">
+                            <input type="hidden" name="id" value="@i.Id" />
+                            <button type="submit">Eliminar</button>
+                        </form>
+                    }
+                </div>
+            </li>
         }
     }
     else
