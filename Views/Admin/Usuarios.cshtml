@@ -4,22 +4,20 @@
 
     <h1>Administrar usuarios</h1>
 
-    <div>
+<div class="lista-usuarios">
     @foreach (var i in Model)
     {
-        <p>@i.Email</p>
+        <div class="fila-usuario">
+            <span class="email-usuario">@i.Email</span>
 
-        @if (i.LockoutEnd != null && i.LockoutEnd > DateTimeOffset.Now)
-        {
-            <a href="/Admin/Desbloquear?id=@i.Id">Desbloquear</a>
-        }
-        else
-        {
-            <a href="/Admin/Bloquear?id=@i.Id">Bloquear</a>
-        }
-
-        <hr />
+            @if (i.LockoutEnd != null && i.LockoutEnd > DateTimeOffset.Now)
+            {
+                <a href="/Admin/Desbloquear?id=@i.Id" class="btnDesbloquear">Desbloquear</a>
+            }
+            else
+            {
+                <a href="/Admin/Bloquear?id=@i.Id" class="btnBloquear">Bloquear</a>
+            }
+        </div>
     }
-
-  
-    </div>
+</div>

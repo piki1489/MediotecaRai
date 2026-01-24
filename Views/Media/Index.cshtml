@@ -6,42 +6,67 @@
 
 <h1>Bienvenido a la Medioteca Rai</h1>
 
-<form method="get">
-    <div>
-        <label>Tipo</label>
-        <select name="tipo">
+<form method="get" class="formulario-filtro">
+    <div class="campo-filtro">
+        <label for="tipo">Tipo</label>
+        <select name="tipo" id="tipo">
             <option value="">Todos</option>
             <option value="Libro">Libro</option>
             <option value="Musica">Música</option>
             <option value="Pelicula">Película</option>
+            <option value="Disco/Vinilo">Disco/Vinilo</option>
+            <option value="Comic">Cómic</option>
+            <option value="CD">CD</option>
         </select>
     </div>
 
-    <div>
-        <label>Título</label>
-        <input type="text" name="titulo" />
+    <div class="campo-filtro">
+        <label for="titulo">Título</label>
+        <input type="text" name="titulo" id="titulo" />
     </div>
 
-    <div>
-        <button type="submit">Buscar</button>
+    <div class="campo-filtro acciones-filtro">
+        <button class="boton boton-primario" type="submit">Buscar</button>
     </div>
+  
 </form>
-<ul>
+@if (User.Identity.IsAuthenticated)
+{
+    <div class="campo-filtro acciones-filtro">
+        <a class="boton btnDesbloquear" href="/Media/Create">Añadir nueva obra</a>
+    </div>
+}
+<ul class="lista-obras">
     @if (Model != null && Model.Any())
     {
         @foreach (var i in Model)
         {
-            <li>
-                <div>
-                    <a href="/Media/Detalles/@i.Id">@i.Titulo</a><br />
-                    <strong>Tipo:</strong> @i.Tipo<br />
-                    <strong>Autor:</strong> @i.Autor<br />
+            <li class="tarjeta-obra">
+                <div class="tarjeta-cabecera">
+                    <a class="tarjeta-titulo" href="/Media/Detalles/@i.Id">@i.Titulo</a>
+                    <span class="tarjeta-etiqueta">@i.Tipo</span>
+                </div>
+
+                <div class="tarjeta-detalles">
+                    <div class="detalle">
+                        <span class="detalle-titulo">Autor</span>
+                        <span class="detalle-valor">@i.Autor</span>
+                    </div>
+
+                    <div class="detalle">
+                        <span class="detalle-titulo">Año</span>
+                        <span class="detalle-valor">@i.Anio</span>
+                    </div>
+                </div>
+
+                <div class="tarjeta-acciones">
+                    <a class="boton boton-secundario" href="/Media/Detalles/@i.Id">Ver detalles</a>
 
                     @if (User.IsInRole("Admin"))
                     {
-                        <form action="/Media/Delete" method="post">
+                        <form class="form-eliminar" action="/Media/Delete" method="post">
                             <input type="hidden" name="id" value="@i.Id" />
-                            <button type="submit">Eliminar</button>
+                            <button class="boton boton-peligro" type="submit">Eliminar</button>
                         </form>
                     }
                 </div>
@@ -50,21 +75,20 @@
     }
     else
     {
-        <li>No hay resultados</li>
+        <li class="estado-vacio">
+            <div class="estado-vacio-titulo">No hay resultados</div>
 
-        @if (User.Identity.IsAuthenticated)
-        {
-            <li>
-                <a href="/Media/Create">Añadir nueva obra</a>
-            </li>
-        }
-        else
-        {
-            <li>
-                <a href="/Identity/Account/Login">Regístrate para añadir una nueva obra</a>
-            </li>
-        }
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="boton boton-primario" href="/Media/Create">Añadir nueva obra</a>
+            }
+            else
+            {
+                <a class="boton boton-primario" href="/Identity/Account/Login">Regístrate para añadir una nueva obra</a>
+            }
+        </li>
     }
 </ul>
+
 
 

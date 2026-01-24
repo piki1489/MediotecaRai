@@ -38,11 +38,41 @@ namespace MediotecaRai.Controllers
         [HttpPost]
         public IActionResult Create(MediaItem mediaItem)
         {
+            if (string.IsNullOrWhiteSpace(mediaItem.Titulo))
+            {
+                TempData["Error"] = "El título es obligatorio";
+                return View(mediaItem);
+            }
+
+            if (string.IsNullOrWhiteSpace(mediaItem.Tipo))
+            {
+                TempData["Error"] = "El tipo es obligatorio";
+                return View(mediaItem);
+            }
+
+            if (string.IsNullOrWhiteSpace(mediaItem.Autor))
+            {
+                TempData["Error"] = "El autor es obligatorio";
+                return View(mediaItem);
+            }
+
+            if (mediaItem.Anio == 0)
+            {
+                TempData["Error"] = "El año es obligatorio";
+                return View(mediaItem);
+            }
+
+            if (string.IsNullOrWhiteSpace(mediaItem.Descripcion))
+            {
+                TempData["Error"] = "La descripción es obligatoria";
+                return View(mediaItem);
+            }
+
             _context.MediaItems.Add(mediaItem);
             _context.SaveChanges();
             return RedirectToAction("Index");
-
         }
+
 
         public IActionResult Detalles(int id)
         {

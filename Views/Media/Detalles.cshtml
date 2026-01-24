@@ -1,17 +1,27 @@
 ﻿@using MediotecaRai.Models
 @model MediaItem
 
-
 <h1>Detalles</h1>
 
-<div>
-    <h3><strong>Título:</strong> @Model.Titulo</h3>
-    <p><strong>Tipo:</strong> @Model.Tipo</p>
-    <p><strong>Autor:</strong> @Model.Autor</p>
-    <p><strong>Año:</strong> @Model.Anio</p>
-    <p><strong>Descripción:</strong> @Model.Descripcion</p>
-    
+<div class="formulario-filtro-anyadir">
+    <h3 class="detalle-titulo">@Model.Titulo</h3>
+
+    <div class="detalle-linea">
+        <strong>Tipo:</strong> <span>@Model.Tipo</span>
+    </div>
+
+    <div class="detalle-linea">
+        <strong>Autor:</strong> <span>@Model.Autor</span>
+    </div>
+
+    <div class="detalle-linea">
+        <strong>Año:</strong> <span>@Model.Anio</span>
+    </div>
+
+    <div class="detalle-descripcion">
+        <strong>Descripción</strong>
+        <p>@Model.Descripcion</p>
+    </div>
+
+    <a class="boton boton-secundario" href="/Media">Volver</a>
 </div>
-
-
-<a href="/Media">Volver</a>

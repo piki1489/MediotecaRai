@@ -1,31 +1,358 @@
+/* ========================================
+   INICIO: CONFIGURACIÓN BASE HTML Y BODY
+   ======================================== */
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
+/* Media query para pantallas más grandes */
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+/* FIN: CONFIGURACIÓN BASE HTML Y BODY */
+
+
+/* ========================================
+   INICIO: ESTILOS PARA FOCUS EN BOTONES E INPUTS
+   ======================================== */
+.btn:focus, 
+.btn:active:focus, 
+.btn-link.nav-link:focus, 
+.form-control:focus, 
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+/* FIN: ESTILOS PARA FOCUS EN BOTONES E INPUTS */
+
+
+/* ========================================
+   INICIO: ESTILOS DE FORMULARIOS FLOTANTES
+   ======================================== */
+.form-floating > .form-control-plaintext::placeholder, 
+.form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.form-floating > .form-control-plaintext:focus::placeholder, 
+.form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+/* FIN: ESTILOS DE FORMULARIOS FLOTANTES */
+
+
+/* ========================================
+   INICIO: TÍTULOS DE LAS PÁGINAS
+   ======================================== */
+h1 {
+    font-size: 2.5em;
+    text-align: center;
+}
+/* FIN: TÍTULOS DE LAS PÁGINAS */
+
+
+/* ========================================
+   INICIO: FORMULARIO DE FILTRO
+   ======================================== */
+.formulario-filtro {
+    display: flex;
+    gap: 37px;
+    margin: 16px 0 20px;
+    padding: 14px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #fff;
+    align-items: flex-end;
+    justify-content: center;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* Formulario de añadir */
+.formulario-filtro-anyadir {
+    display: flex;
+    gap: 16px;
+    margin: 16px 0 20px;
+    padding: 14px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: #fff;
+    flex-direction: column;
 }
+
+/* Campo individual del filtro */
+.campo-filtro {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 180px;
+}
+
+.campo-filtro label {
+    font-size: .85rem;
+    font-weight: 700;
+    color: #374151;
+}
+
+/* Inputs y selects dentro del campo */
+.campo-filtro input,
+.campo-filtro select {
+    padding: 9px 10px;
+    border-radius: 10px;
+    border: 1px solid #d1d5db;
+    font-size: .95rem;
+}
+
+.campo-filtro input:focus,
+.campo-filtro select:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37,99,235,.15);
+}
+
+/* Botones de acción del filtro */
+.acciones-filtro {
+    display: flex;
+}
+
+.acciones-filtro .boton {
+    height: 40px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 640px) {
+    .formulario-filtro {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .acciones-filtro {
+        margin-top: 6px;
+    }
+}
+/* FIN: FORMULARIO DE FILTRO */
+
+
+/* ========================================
+   INICIO: TARJETAS DE OBRAS (CARDS)
+   ======================================== */
+/* Lista de obras */
+.lista-obras {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0;
+    display: flex;
+    gap: 12px;
+}
+
+/* Tarjeta individual */
+.tarjeta-obra {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 14px 16px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+}
+
+/* Cabecera de la tarjeta */
+.tarjeta-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.tarjeta-titulo {
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #111827;
+}
+
+.tarjeta-titulo:hover {
+    text-decoration: underline;
+}
+
+/* Etiqueta de tipo de obra */
+.tarjeta-etiqueta {
+    font-size: .85rem;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    color: #374151;
+    white-space: nowrap;
+}
+
+/* Detalles de la tarjeta */
+.tarjeta-detalles {
+    margin-top: 10px;
+    display: flex;
+    gap: 16px;
+    color: #374151;
+    flex-direction: column;
+}
+
+.detalle {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 140px;
+}
+
+.detalle-titulo {
+    font-size: .8rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: .02em;
+}
+
+.detalle-valor {
+    font-size: .98rem;
+    color: #111827;
+}
+
+/* Acciones de la tarjeta (botones) */
+.tarjeta-acciones {
+    margin-top: 12px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-eliminar {
+    margin: 0;
+}
+
+/* Responsive para móviles */
+@media (max-width: 640px) {
+    .tarjeta-cabecera {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .detalle {
+        min-width: 0;
+    }
+}
+/* FIN: TARJETAS DE OBRAS (CARDS) */
+
+
+/* ========================================
+   INICIO: BOTONES GENERALES
+   ======================================== */
+.boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 10px;
+    padding: 9px 12px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Botón primario (azul) */
+.boton-primario {
+    background: #2563eb;
+    color: #fff;
+}
+
+.boton-primario:hover {
+    background: #1d4ed8;
+}
+
+/* Botón secundario (gris) */
+.boton-secundario {
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.boton-secundario:hover {
+    background: #e5e7eb;
+}
+
+/* Botón peligro (rojo) */
+.boton-peligro {
+    background: #dc2626;
+    color: #fff;
+}
+
+.boton-peligro:hover {
+    background: #b91c1c;
+}
+/* FIN: BOTONES GENERALES */
+
+
+/* ========================================
+   INICIO: ESTADO VACÍO
+   ======================================== */
+.estado-vacio {
+    border: 1px dashed #d1d5db;
+    border-radius: 12px;
+    padding: 16px;
+    color: #6b7280;
+    background: #fafafa;
+}
+
+.estado-vacio-titulo {
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 10px;
+}
+/* FIN: ESTADO VACÍO */
+
+
+/* ========================================
+   INICIO: GESTIÓN DE USUARIOS
+   ======================================== */
+.lista-usuarios {
+    margin-top: 15px;
+}
+
+.fila-usuario {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.email-usuario {
+    font-weight: 500;
+}
+
+/* Botones de bloquear/desbloquear usuarios */
+.btnBloquear,
+.btnDesbloquear {
+    padding: 6px 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.btnBloquear {
+    background-color: #c0392b;
+}
+
+.btnBloquear:hover {
+    background-color: #a93226;
+}
+
+.btnDesbloquear {
+    background-color: #27ae60;
+}
+
+.btnDesbloquear:hover {
+    background-color: #1e8449;
+}
+/* FIN: GESTIÓN DE USUARIOS */

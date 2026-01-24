@@ -1,8 +1,51 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="p-4 p-md-5 mb-4 rounded bg-light border">
+    <div class="col-lg-8 px-0">
+        <h1 class="display-6 fw-bold">Bienvenido a Medioteca Rai</h1>
+        <p class="lead my-3">
+            Busca libros, música, películas y más. Si te registras podrás añadir nuevas obras.
+        </p>
+
+        <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-primary" href="/Media/Index">Entrar a la Medioteca</a>
+
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <a class="btn btn-outline-secondary" href="/Identity/Account/Login">Iniciar sesión</a>
+                <a class="btn btn-outline-secondary" href="/Identity/Account/Register">Registrarme</a>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row g-3">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Buscar</h5>
+                <p class="card-text">Filtra por tipo y título para encontrar rápido lo que necesitas.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Detalles</h5>
+                <p class="card-text">Entra en cada obra para ver su información completa.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Administración</h5>
+                <p class="card-text">Los admins pueden gestionar usuarios y eliminar obras.</p>
+            </div>
+        </div>
+    </div>
 </div>
