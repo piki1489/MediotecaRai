@@ -13,6 +13,7 @@ namespace MediotecaRai.Controllers
         {
             _context = context;
         }
+        //FILTRO BÚSQUEDA
         public IActionResult Index(string tipo, string titulo)
         {
             var query = _context.MediaItems.AsQueryable();
@@ -29,7 +30,7 @@ namespace MediotecaRai.Controllers
             var resultados = query.ToList();
             return View(resultados);
         }
-
+        //CREACION DE ITEMS 
         [Authorize]
         public IActionResult Create()
         {
@@ -74,7 +75,7 @@ namespace MediotecaRai.Controllers
             return RedirectToAction("Index");
         }
 
-
+        //RECOGER EL DETALLE DEL ITEM SELECCIONADO
         public IActionResult Detalles(int id)
         {
             var item = _context.MediaItems.FirstOrDefault(m => m.Id == id);
@@ -84,12 +85,7 @@ namespace MediotecaRai.Controllers
             }
             return View(item);
         }
-
-        [Authorize(Roles = "Admin")]
-        public IActionResult SoloAdmin()
-        {
-            return View();
-        }
+        //BORRADO DE ITEMS 
         [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
