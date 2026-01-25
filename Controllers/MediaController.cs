@@ -27,6 +27,7 @@ namespace MediotecaRai.Controllers
                 //ponemos Contains para una busqueda más flexible
                 query = query.Where(m => m.Titulo.Contains(titulo));
             }
+
             var resultados = query.ToList();
             return View(resultados);
         }

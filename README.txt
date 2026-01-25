@@ -38,10 +38,15 @@ El proyecto sirve para gestionar y mostrar contenidos multimedia de forma organi
 
 ## Ejecución
 
-El proyecto se puede ejecutar desde Visual Studio usando IIS Express o el servidor integrado.
+El proyecto se puede ejecutar desde Visual Studio el  servidor integrado.
 
 ## Estado del proyecto
 
 Proyecto en desarrollo.
+
+## Futuras mejoras
+- Implemenetar imagenen de los contenidos multimedia, investigar si es posible obtenerlas desde un a API.
+- Poder editar obras después de crearlas
+
 
 
